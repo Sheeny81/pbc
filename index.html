@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+    <head>
+        <script src="assets/js/color-modes.js"></script>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="Carlos PECHIR for IZWERK from Bootstrap's CAROUSEL Example page">
+        <meta name="generator" content="Hugo 0.111.3">
+        <title>PBC</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+        <!-- Bootstrap CSS -->
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" href="assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+        <link rel="icon" href="assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="icon" href="assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+        <link rel="manifest" href="assets/img/favicons/manifest.json">
+        <link rel="icon" type="image/x-con" href="assets/img/favicon.ico">
+        <meta name="theme-color" content="#712cf9">
+
+
+        <!-- Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" >
+
+        
+        <!-- Bootstrap JS -->
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+        
+        <!-- Leaflet CSS JS -->
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+
+        <!-- Custom styles for this template -->
+        <link href="assets/css/styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check2" viewBox="0 0 16 16">
+                <path
+                    d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+            </symbol>
+            <symbol id="circle-half" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+            </symbol>
+            <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+                <path
+                    d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+                <path
+                    d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+            </symbol>
+            <symbol id="sun-fill" viewBox="0 0 16 16">
+                <path
+                    d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+            </symbol>
+        </svg>
+
+
+        <header data-bs-theme="dark">
+            
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-cg">
+                <div class="container-fluid">
+                    <a class="navbar-brand brand-link text-c1 justify-content-center" href="#">
+                        <img class="logo-pbc" src="assets\img\content\pbc.png" alt="LogoPBC" />
+                    </a>
+                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button> -->
+            
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" target="_blank"
+                                    href="">
+                                    <span 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target=".navbar-collapse.show">
+                                        <i class="bi bi-facebook icon-links"></i>
+                                        <small class="d-md-none ms-2 text-link">Facebook</small>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" target="_blank" 
+                                href="">
+                                    <span
+                                    data-bs-toggle="collapse" 
+                                    data-bs-target=".navbar-collapse.show">
+                                        <i class="bi bi-instagram icon-links"></i>
+                                        <small class="d-md-none ms-2 text-link">Instagram</small>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" 
+                                href="#contacto">
+                                    <span
+                                    data-bs-toggle="collapse" 
+                                    data-bs-target=".navbar-collapse.show">
+                                        <i class="bi bi-telephone-forward-fill icon-links"></i>
+                                        <small class="d-md-none ms-2 text-link">Teléfonos</small>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul> -->
+                        <!-- <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-link" 
+                                href="#nosotros">
+                                    <span
+                                    data-bs-toggle="collapse" 
+                                    data-bs-target=".navbar-collapse.show">
+                                    Consulting
+                                    </span>
+                                </a>
+                            </li>
+                        </ul> -->
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+
+
+
+        <!-- MAIN   =====================================================================================================================================   -->
+        <main class="bg-c1 pt-2">
+            <!-- CONTAINER LANDING 
+            ------------------------------------------------------------------------------------------- -->
+            <div class = "container-fluid landing">
+                <div class="row">
+                    <div class="col top-landing">
+                        <h1 id="landing-title">
+                            <em>
+                            <b class="iniciales">P</b>elcastre 
+                            <b class="iniciales">B</b>usiness 
+                            <b class="iniciales">C</b>onsulting</h1>
+                            </em>
+                        <h3 id="landing-subtitle">Transforma tu negocio con nuestro enfoque integral de consultoría financiera y de negocios</h3>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col bottom-landing">
+                    <img id="landing-image"
+                        class="img-fluid rounded"       
+                        src="assets\img\content\landingimg.png"  
+                        alt="landing image">
+                    </div>
+                </div>         
+            </div>
+
+            <div class="container">
+                <hr class="featurette-divider" id="expertise" >
+            </div>
+     
+            
+            <!-- CONTAINER EXPERTISE 
+            ------------------------------------------------------------------------------------------- -->
+            <div class="container rounded p-3 bg-c3 text-c1 expertise" >
+        
+                <div class="container expertise-hook">
+                    <h1 class="text-center my-4 expertise-h1">Las soluciones a los problemas de tu negocio!</h1>
+                    <p class="text-justify">Somos expertos en desarollo de negocios exitosos, te aportaremos las mejores soluciones
+                        finacieras para que te puedas concentrar en tu core business.</p>
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 d-flex flex-column flex-fill">
+                            <img class="rounded-circle mx-auto mb-4 border border-white border-4 expertise-image" 
+                            width="140" height="140" src="assets\img\content\nego.png" alt="Negocios">
+                            <h2 class="text-center align-items-baseline">Consultoría de Negocios</h2>
+                            <p class="mt-3 flex-fill test">Desde el análisis de mercado hasta la estrategia de negocio, nuestros consultores de negocios te ayudarán a
+                                identificar
+                                oportunidades de crecimiento y a tomar decisiones informadas y estratégicas.</p>
+                            <p><a class="btn btn-outline-light" href="#consultoria-negocios" role="button">Saber más &raquo;</a></p>
+                        </div>
+                        <div class="col-md-3 d-flex flex-column flex-fill">
+                            <img class="rounded-circle mx-auto mb-4 border border-white border-4 expertise-image" 
+                            width="140" height="140" src="assets\img\content\finanzas.png" alt="Finanzas">
+                            <h2 class="text-center align-items-baseline">Análisis Financiero</h2>
+                            <p class="mt-3 flex-fill">Nuestros expertos en finanzas analizarán tus estados financieros, identificarán tendencias y te proporcionarán
+                                recomendaciones valiosas para mejorar la salud financiera de tu empresa.</p>
+                            <p><a class="btn btn-outline-light" href="#analisis-financiero" role="button">Saber más &raquo;</a></p>
+                        </div>
+                        <div class="col-md-3 d-flex flex-column flex-fill">
+                            <img class="rounded-circle mx-auto mb-4 border border-white border-4 expertise-image" 
+                            width="140" height="140" src="assets\img\content\planestrategica.png" alt="Estrategia">
+                            <h2 class="text-center align-items-baseline">Planeación Estratégica</h2>
+                            <p class="mt-3 flex-fill">Te ayudamos a definir objetivos a largo plazo y a crear un plan de acción detallado para alcanzarlos, identificando
+                                los
+                                recursos necesarios y estableciendo un plan de seguimiento.</p>
+                            <p><a class="btn btn-outline-light" href="#planeacion-estrategica" role="button">Saber más &raquo;</a></p>
+                        </div>
+                        <div class="col-md-3 d-flex flex-column flex-fill">
+                            <img class="rounded-circle mx-auto mb-4 border border-white border-4 expertise-image" 
+                            width="140" height="140" src="assets\img\content\contaudit.png" alt="Contabilidad y Auditoria">
+                            <h2 class="text-center align-items-baseline">Contabilidad y Auditoria</h2>
+                            <p class="mt-3 flex-fill">Nuestros profesionales en contabilidad y auditoría te brindarán la tranquilidad de saber que tus registros
+                                financieros
+                                están en orden y cumplen con los estándares contables y fiscales.</p>
+                            <p><a class="btn btn-outline-light" href="#contabilidad-auditoria" role="button">Saber más &raquo;</a></p>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+
+
+
+            <div class="container">
+                <hr class="featurette-divider" id="consultoria-negocios">
+            </div>
+
+            <!-- CONTAINER MARKETING 
+                ------------------------------------------------------------------------------------------- -->
+
+            <div class="container marketing rounded p-3 bg-c1-5">
+                <div class="row featurette" id="">
+                    <div class="col-md-7 text-c4">
+                        <h2 class="featurette-heading fw-normal lh-1">Consultoría de Negocios </h2>
+                        <br>
+                        <p class="lead ">Nuestro equipo de expertos en consultoría de negocios se especializa en resolver los desafíos y problemas cotidianos que
+                        enfrentan las empresas en su operación diaria. Nos enfocamos en brindar soluciones efectivas y personalizadas a cada
+                        cliente, que les permitan mejorar su eficiencia, aumentar su rentabilidad y alcanzar sus objetivos a largo plazo. Con
+                        nuestra experiencia y conocimientos, aseguramos un servicio de calidad que brinda tranquilidad y seguridad a nuestros
+                        clientes.</p>
+                        
+                        <a type="button" class="btn btn-outline-dark float-end btn-cita-featurette" href="#contacto">Contactanos</a>
+                        
+                    </div>
+                    <div class="col-md-5 d-flex align-items-center">
+                        <img class="feat-img img-fluid rounded" src="assets\img\content\nego-gd.png" alt="Expertos en Negocios">
+                    </div>
+                </div>
+                
+                <hr class="featurette-divider" id="analisis-financiero">
+
+                <div class="row featurette">
+                    <div class="col-md-7 order-md-2" >
+                        <h2 class="featurette-heading fw-normal lh-1">Análisis Financiero</span></h2>
+                        <br>
+                        <p class="lead">Realizamos un análisis financiero integral y detallado de la situación de nuestros clientes, que les permite comprender
+                        mejor su posición financiera y tomar decisiones informadas en su empresa. A través de nuestro análisis, identificamos
+                        las áreas de oportunidad y desarrollamos estrategias personalizadas para mejorar su rentabilidad y disminuir los riesgos
+                        financieros. En resumen, nuestra consultoría en análisis financiero es clave para el éxito y crecimiento sostenible de
+                        su empresa.</p>
+                        
+                        <a type="button" class="btn btn-outline-dark btn-cita-featurette" href="#contacto">Contactanos</a>
+                        
+                    </div>
+                    <div class="col-md-5 order-md-1 d-flex align-items-center">
+                        <img class="feat-img img-fluid rounded" src="assets\img\content\finanzas-gd.png" alt="Expertos en analisis financiero"></img>
+                    </div>
+                </div>
+                
+
+                <hr class="featurette-divider" id="planeacion-estrategica">
+
+                <div class="row featurette">
+                    <div class="col-md-7" >
+                        <h2 class="featurette-heading fw-normal lh-1">Planeación Estratégica</h2>
+                        <br>
+                        <p class="lead">Desarrollamos planes estratégicos detallados y personalizados para cada cliente, basados en su visión y objetivos a
+                        largo plazo. Nuestro enfoque en la planeación estratégica nos permite identificar oportunidades de crecimiento y
+                        aumentar la rentabilidad de la empresa. Además, trabajamos en estrecha colaboración con nuestros clientes para
+                        implementar y monitorear el plan, asegurando su éxito a largo plazo.</p>
+                        
+                        <a type="button" class="btn btn-outline-dark float-end btn-cita-featurette" href="#contacto">Contactanos</a>
+                        
+                    </div>
+                    <div class="col-md-5 d-flex align-items-center">
+                            <img class="feat-img img-fluid rounded" src="assets\img\content\planestrategica-gd.png" alt="Expertos en planeacion y estrategia"></img>
+                    </div>
+                </div>
+
+                <hr class="featurette-divider" id="contabilidad-auditoria">
+                
+                <div class="row featurette">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading fw-normal lh-1">Contabilidad y Auditoria</span></h2>
+                        <br>
+                        <p class="lead">Ofrecemos servicios de contabilidad y auditoría para garantizar la integridad y precisión de la información financiera
+                        de nuestros clientes. Nuestros expertos en contabilidad se encargan de la contabilización de transacciones, la
+                        presentación de estados financieros y la preparación de impuestos. Además, nuestros servicios de auditoría brindan una
+                        revisión independiente y objetiva de los estados financieros, lo que proporciona seguridad y confianza a nuestros
+                        clientes y partes interesadas.</p>
+                
+                        <a type="button" class="btn btn-outline-dark btn-cita-featurette" href="#contacto">Contactanos</a>
+                
+                    </div>
+                    <div class="col-md-5 order-md-1 d-flex align-items-center">
+                        <img class="feat-img img-fluid rounded" src="assets\img\content\contaudit-gd.png" alt="Expertos contables y experimentados auditores"></img>
+                    </div>
+                </div>
+            </div>
+                
+            <hr class="featurette-divider opacity-0" id="contacto">
+                
+            <div class="container rounded p-3 bg-c3 text-c1">
+                <div class="container col-lg-6 col-md-8 col-sm-10 col-xs-10">
+                    <h3 class="text-center"><strong>Contactanos</strong></h3>
+                    <h3 class="text-center ">
+                        <a type="button" class="w-100 btn btn-outline-success tel-cita" target="_blank"
+                            href="https://wa.me/527297620506">
+                            <i class="bi bi-whatsapp text-c1"> A travez de nuesto business Whatsapp</i>
+                            &#160 </a>
+                        <br>
+                
+                        <p class="text-center fs-4 text mt-4 mb-5">O bien, escríbenos un mensaje y nos pondremos en contacto contigo.
+                        </p>
+                </div>
+                
+                <div class="container col-lg-6 col-md-8 col-sm-10 col-xs-10">
+                    <form action="/" method="post">
+                        <input  
+                            type="text" 
+                            class="form-control contacto-name" 
+                            placeholder="Nombre, Apellido" 
+                            name="NombreApellido"
+                            required
+                            disabled>
+                        <input  
+                            type="email" 
+                            class="form-control contacto-mail" 
+                            placeholder="E-mail" 
+                            name="eMail" 
+                            required 
+                            disabled>
+                        <input  
+                            type="email" 
+                            class="form-control contacto-phone" 
+                            placeholder="Teléfono" 
+                            name="Phone" 
+                            required 
+                            disabled>
+                        <textarea   
+                            class="form-control my-4" 
+                            placeholder="¿En qué podemos ayudarte?" 
+                            rows="8"    
+                            required 
+                            disabled>
+                        </textarea>
+                        <button 
+                            class="w-50 mw-75 btn btn-lg btn-success justify-content-end" 
+                            type="submit"
+                            value="Submit" 
+                            disabled>
+                            Enviar</button>
+                
+                    </form>
+                </div>
+            </div>
+            
+
+            <hr class="featurette-divider opacity-0" id="">
+
+
+           
+
+            <div class="accordion credit-img" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed credit-img" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Atribución de imagenes:
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a
+                                                href="https://www.freepik.com/free-photo/business-colleagues-meeting-paperwork-concept_3218159.htm#page=2&query=consulting&position=20&from_view=search&track=sph">
+                                                Image by rawpixel.com</a> on Freepik
+                                        </td>
+                                        <td>
+                                            Photo by <a
+                                                href="https://unsplash.com/de/@homajob?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Scott
+                                                Graham</a> on <a
+                                                href="https://unsplash.com/photos/5fNmWej4tAA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                                        </td>
+                                        <td>
+                                            Photo by <a
+                                                href="https://unsplash.com/@kellysikkema?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kelly
+                                                Sikkema</a> on <a
+                                                href="https://unsplash.com/photos/xoU52jUVUXA?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Photo by <a
+                                                href="https://unsplash.com/@tfrants?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Tyler
+                                                Franta</a> on <a
+                                                href="https://unsplash.com/photos/iusJ25iYu1c?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                                        </td>
+                                        <td>
+                                            Photo by <a
+                                                href="https://unsplash.com/@kmuza?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Carlos
+                                                Muza</a> on <a
+                                                href="https://unsplash.com/photos/hpjSkU2UYSU?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+                                        </td>
+                                        <td>
+                                            Image by <a
+                                                href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3087395">Gerd
+                                                Altmann</a> from <a
+                                                href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3087395">Pixabay</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </div>
+
+            <!-- FOOTER -->
+            <footer class="container-fluid bg-dark text-white">
+                <p class="float-end"><a href="#">Inicio</a></p>
+                <p>&copy; 2023 Pelcastre Business Consultant &middot; </p>
+            </footer>
+
+        </main>
+
+
+        <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+
+        <script src="assets/js/index.js" ></script>
+
+
+    </body>
+
+</html>
