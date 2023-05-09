@@ -98,6 +98,46 @@ body {
     margin-left:50%;
 }
 
+.contact-btn-cnt{
+    z-index: 1500;
+    position:sticky;
+    top:90%;
+}
+
+.contact-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    right: 5%;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    animation: pulse 2s 1s ease-out infinite;
+    
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: none;
+        filter: drop-shadow(0 0 0.75rem rgb(var(--color-palete-4-rgb)));
+    }
+
+    50% {
+        opacity: .95;
+        transform: scale(.85);
+        filter: drop-shadow(0 0 0.75rem rgb(var(--color-palete-8-rgb)));
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+        filter: drop-shadow(0 0 0.75rem rgb(var(--color-palete-4-rgb)));
+    }
+}
+
+
+
 
 /* LANDING CONTENT
 -------------------------------------------------- */
@@ -256,8 +296,6 @@ body {
         margin-top: 7rem;
     }
 }
-
-
 
 
 /*BUTTON COLOR 
