@@ -245,10 +245,10 @@ body {
 -------------------------------------------------- */
 
 /* Center align the text within the three columns below the carousel */
- .marketing p, .marketing h2 {
-   /* text-shadow: var(--color-palete-6) 1px 0 1px;
-*/
+/* .marketing p, .marketing h2 {
+    text-shadow: var(--color-palete-6) 1px 0 1px;
 }
+*/
 
 /* rtl:begin:ignore */
 .marketing .col-lg-4 p {
